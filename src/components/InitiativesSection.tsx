@@ -12,13 +12,15 @@ import ploggersImg from "@/assets/ploggers.jpeg";
 import socialShelfImg from "@/assets/social-shelf.jpeg";
 import bookImg from "@/assets/books.jpeg";
 import laalBindiImg from "@/assets/laal-bindi.jpeg";
+import laalBindi2Img from "@/assets/laal-bindi2.jpeg";
+
 
 const initiatives = [
   {
     title: "Sambhajinagar Ploggers",
     description:
       "Combining fitness with environmental cleanup, Sambhajinagan Ploggers brings together citizens who jog through city streets while collecting waste.",
-    images: [ploggersImg, ploggersImg, ploggersImg],
+    images: [ploggersImg, ploggersImg],
     tag: "Environment",
     badge: "bg-emerald-600",
     accentColor: "#059669",
@@ -28,7 +30,7 @@ const initiatives = [
     title: "Social Shelf",
     description:
       "A community-driven book-sharing initiative creating open access to knowledge across neighborhoods.",
-    images: [socialShelfImg, socialShelfImg, bookImg],
+    images: [socialShelfImg, bookImg],
     tag: "Education",
     badge: "bg-[#E8A857]",
     accentColor: "#E8A857",
@@ -38,7 +40,7 @@ const initiatives = [
     title: "Laal Bindi",
     description:
       "A women's empowerment campaign using the red bindi as a symbol of strength, dignity, and identity.",
-    images: [laalBindiImg, laalBindiImg, laalBindiImg],
+    images: [laalBindi2Img, laalBindiImg],
     tag: "Women Empowerment",
     badge: "bg-rose-600",
     accentColor: "#e11d48",
@@ -49,38 +51,11 @@ const initiatives = [
 const InitiativesSection = () => {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
-  const [imageIndex, setImageIndex] = useState(0);
 
   const autoplayRef = useRef(null);
-  const imageCarouselRef = useRef(null);
   const isTransitioning = useRef(false);
 
   const currentInitiative = initiatives[current];
-
-  // Reset image index when initiative changes
-  useEffect(() => {
-    setImageIndex(0);
-  }, [current]);
-
-  // Image carousel auto-rotation
-  useEffect(() => {
-    if (currentInitiative.images.length <= 1) {
-      if (imageCarouselRef.current) {
-        clearInterval(imageCarouselRef.current);
-      }
-      return;
-    }
-
-    imageCarouselRef.current = setInterval(() => {
-      setImageIndex((prev) => (prev + 1) % currentInitiative.images.length);
-    }, 4000);
-
-    return () => {
-      if (imageCarouselRef.current) {
-        clearInterval(imageCarouselRef.current);
-      }
-    };
-  }, [currentInitiative.images.length]);
 
   // Navigate between initiatives
   const paginate = useCallback((newDirection) => {
@@ -149,57 +124,43 @@ const InitiativesSection = () => {
     }),
   };
 
-  const PhotoFrame = ({ delay, rotate, position, size, zIndex }) => (
-    <motion.div
-      initial={{ opacity: 0, rotate: rotate * 2, y: 30 }}
-      animate={{ opacity: 1, rotate, y: 0 }}
-      transition={{
-        delay,
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      whileHover={{
-        rotate: rotate / 2,
-        scale: 1.02,
-        y: -8,
-        zIndex: 40,
-      }}
-      className={`absolute ${position} ${size} ${zIndex} cursor-pointer group`}
-    >
-      <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-slate-900/20">
-        <div
-          className={`relative ${
-            size === "w-[52%]" ? "aspect-[4/3]" : "aspect-[3/4]"
-          } overflow-hidden bg-slate-100`}
-        >
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={`photo-${current}-${imageIndex}`}
-              src={currentInitiative.images[imageIndex]}
-              alt={`${currentInitiative.title} - Image ${imageIndex + 1}`}
+  const PhotoFrame = ({ delay, rotate, position, size, zIndex, imageIndexOffset = 0 }) => {
+    // Show static image based on offset
+    const displayImageIndex = imageIndexOffset % currentInitiative.images.length;
+    
+    return (
+      <motion.div
+        initial={{ opacity: 0, rotate: rotate * 2, y: 30 }}
+        animate={{ opacity: 1, rotate, y: 0 }}
+        transition={{
+          delay,
+          duration: 0.8,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        whileHover={{
+          rotate: rotate / 2,
+          scale: 1.02,
+          y: -8,
+          zIndex: 40,
+        }}
+        className={`absolute ${position} ${size} ${zIndex} cursor-pointer group`}
+      >
+        <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-slate-900/20">
+          <div
+            className={`relative ${
+              size === "w-[52%]" ? "aspect-[4/3]" : "aspect-[3/4]"
+            } overflow-hidden bg-slate-100`}
+          >
+            <img
+              src={currentInitiative.images[displayImageIndex]}
+              alt={`${currentInitiative.title} - Image ${displayImageIndex + 1}`}
               className="w-full h-full object-cover"
-              initial={{
-                opacity: 0,
-                scale: 1.1,
-              }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-              }}
-              exit={{
-                opacity: 0,
-                scale: 0.95,
-              }}
-              transition={{
-                duration: 0.6,
-                ease: [0.22, 1, 0.36, 1],
-              }}
             />
-          </AnimatePresence>
+          </div>
         </div>
-      </div>
-    </motion.div>
-  );
+      </motion.div>
+    );
+  };
 
   return (
     <>
@@ -278,6 +239,7 @@ const InitiativesSection = () => {
                         position="left-[2%] top-[5%]"
                         size="w-[52%]"
                         zIndex="z-10"
+                        imageIndexOffset={0}
                       />
 
                       <PhotoFrame
@@ -286,6 +248,7 @@ const InitiativesSection = () => {
                         position="right-[5%] top-[25%]"
                         size="w-[62%]"
                         zIndex="z-20"
+                        imageIndexOffset={1}
                       />
 
                       <motion.div
