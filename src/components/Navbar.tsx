@@ -37,7 +37,7 @@ const Navbar = () => {
         
         {/* Logo + Foundation Name */}
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="Logo" className="h-12 w-auto" />
+          <img src={logo} alt="Logo" className="h-20 w-auto" />
           <span className="text-2xl text-black font-serif tracking-wide">
             Vinit Abhedya Foundation
           </span>
