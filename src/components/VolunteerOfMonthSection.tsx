@@ -1,80 +1,100 @@
 import { motion } from "framer-motion";
-import { Award, Calendar, Heart } from "lucide-react";
+
+const volunteers = [
+  {
+    name: "Rajesh Wagh",
+    image: "https://i.pravatar.cc/200?img=68",
+    drives: 12,
+    hours: 200,
+  },
+  {
+    name: "Anita Sharma",
+    image: "https://i.pravatar.cc/200?img=32",
+    drives: 8,
+    hours: 150,
+  },
+  {
+    name: "Karan Deshmukh",
+    image: "https://i.pravatar.cc/200?img=12",
+    drives: 15,
+    hours: 240,
+  },
+  {
+    name: "Sneha Patil",
+    image: "https://i.pravatar.cc/200?img=45",
+    drives: 10,
+    hours: 180,
+  },
+];
 
 const VolunteerOfMonthSection = () => {
   return (
-    <section className="pt-20 pb-24 bg-gradient-to-b from-emerald-50 via-white to-emerald-100">
-      <div className="container mx-auto px-4">
-        {/* Section Heading */}
+    <section className="py-24 bg-emerald-50">
+      <div className="container mx-auto px-6">
+
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-sm font-body font-semibold text-primary uppercase tracking-wider">
-            Recognition
-          </span>
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mt-3">
-            Volunteer of the Month
+          <h2 className="text-4xl md:text-5xl font-bold text-emerald-900">
+            Our Volunteers
           </h2>
+          <p className="text-emerald-700 mt-4 text-lg">
+            Recognizing individuals driving measurable impact.
+          </p>
         </motion.div>
 
-        {/* Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto bg-card rounded-3xl shadow-elevated overflow-hidden"
-        >
-          <div className="flex flex-col md:flex-row items-center gap-8 p-8 md:p-12">
-            {/* Avatar */}
-            <div className="relative">
-              <img
-                src="https://i.pravatar.cc/150?img=68"
-                alt="Volunteer of the Month"
-                className="w-36 h-36 rounded-full object-cover border-4 border-primary/30"
-              />
-              <div className="absolute -bottom-2 -right-2 w-10 h-10 rounded-full bg-primary flex items-center justify-center shadow-lg">
-                <Award className="w-5 h-5 text-primary-foreground" />
+        {/* Grid */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          {volunteers.map((volunteer, index) => (
+            <motion.div
+              key={volunteer.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="
+                group
+                bg-white
+                rounded-2xl
+                p-8
+                text-center
+                shadow-md
+                transition-all duration-300
+                hover:-translate-y-2
+                hover:shadow-xl
+              "
+            >
+              {/* Profile Image */}
+              <div className="relative w-28 h-28 mx-auto mb-6">
+                <img
+                  src={volunteer.image}
+                  alt={volunteer.name}
+                  className="w-full h-full rounded-full object-cover border-4 border-emerald-200 group-hover:border-emerald-400 transition-colors duration-300"
+                />
               </div>
-            </div>
 
-            {/* Content */}
-            <div className="text-center md:text-left flex-1">
-              <h3 className="text-2xl font-display font-bold text-foreground mb-1">
-                Rajesh Wagh
+              {/* Name */}
+              <h3 className="text-lg font-semibold text-emerald-900 mb-5">
+                {volunteer.name}
               </h3>
-              <p className="text-primary font-body font-medium mb-4">
-                February 2026
-              </p>
 
-              <p className="font-body text-muted-foreground leading-relaxed mb-6">
-                Rajesh has been an outstanding volunteer, leading 12 plogging
-                drives and mentoring new community members. His dedication to
-                environmental cleanup and community building is truly
-                inspirational.
-              </p>
-
-              <div className="flex flex-wrap justify-center md:justify-start gap-4">
-                <div className="flex items-center gap-2 bg-background rounded-full px-4 py-2">
-                  <Calendar className="w-4 h-4 text-primary" />
-                  <span className="font-body text-sm text-foreground">
-                    12 Drives Led
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-2 bg-background rounded-full px-4 py-2">
-                  <Heart className="w-4 h-4 text-primary" />
-                  <span className="font-body text-sm text-foreground">
-                    200+ Hours
-                  </span>
-                </div>
+              {/* Tags */}
+              <div className="flex justify-center gap-3 flex-wrap">
+                <span className="text-xs font-medium bg-emerald-100 text-emerald-800 px-4 py-1.5 rounded-full">
+                  {volunteer.drives} Drives
+                </span>
+                <span className="text-xs font-medium bg-emerald-200 text-emerald-900 px-4 py-1.5 rounded-full">
+                  {volunteer.hours}+ Hours
+                </span>
               </div>
-            </div>
-          </div>
-        </motion.div>
+            </motion.div>
+          ))}
+        </div>
+
       </div>
     </section>
   );
