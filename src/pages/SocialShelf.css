@@ -1,0 +1,142 @@
+/* =========================================
+   SOCIAL SHELF — CLEAN ISOLATED THEME
+   Tailwind-Compatible Version
+========================================= */
+
+/* Root wrapper — wrap whole page with this */
+.social-shelf {
+  --ss-bg: #556b3d;        /* deep olive */
+  --ss-fg: #f5f3e8;        /* warm cream */
+  --ss-accent: #e3b85a;    /* mustard */
+  --ss-muted: #6f7f5a;
+  --ss-card: #5f7446;
+  --ss-border: #6a7c55;
+
+  background-color: var(--ss-bg);
+  color: var(--ss-fg);
+
+  font-family: 'Playfair Display', serif;
+
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ==============================
+   Typography (NO forced colors)
+============================== */
+
+.social-shelf h1,
+.social-shelf h2,
+.social-shelf h3,
+.social-shelf h4,
+.social-shelf h5,
+.social-shelf h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.social-shelf p {
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ==============================
+   Layout helpers
+============================== */
+
+.social-shelf .ss-section {
+  padding: 6rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .social-shelf .ss-section {
+    padding: 8rem 2rem;
+  }
+}
+
+.social-shelf .ss-container {
+  max-width: 72rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ==============================
+   Decorative line
+============================== */
+
+.social-shelf .ss-line {
+  width: 4rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.4;
+}
+
+/* ==============================
+   Accent utility
+============================== */
+
+.social-shelf .ss-accent {
+  color: var(--ss-accent);
+}
+
+/* ==============================
+   Cards
+============================== */
+
+.social-shelf .ss-card {
+  background: var(--ss-card);
+  padding: 2rem;
+  border-radius: 0.75rem;
+  transition: all 0.4s ease;
+}
+
+.social-shelf .ss-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.25);
+}
+
+/* ==============================
+   Editorial underline
+============================== */
+
+.social-shelf .ss-link {
+  position: relative;
+  display: inline-block;
+}
+
+.social-shelf .ss-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.social-shelf .ss-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* ==============================
+   Buttons
+============================== */
+
+.social-shelf .ss-btn {
+  background: var(--ss-accent);
+  color: var(--ss-bg);
+  padding: 0.75rem 1.75rem;
+  border-radius: 999px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.social-shelf .ss-btn:hover {
+  opacity: 0.9;
+}
