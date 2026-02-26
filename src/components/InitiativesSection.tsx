@@ -98,7 +98,7 @@ const InitiativesSection = () => {
       scale: 1,
       transition: {
         x: {
-          type: "spring",
+          type: "spring" as const,
           stiffness: 200,
           damping: 30,
           mass: 0.8,
@@ -113,7 +113,7 @@ const InitiativesSection = () => {
       scale: 0.95,
       transition: {
         x: {
-          type: "spring",
+          type: "spring" as const,
           stiffness: 200,
           damping: 30,
           mass: 0.8,
@@ -414,7 +414,7 @@ const InitiativesSection = () => {
                 </motion.div>
 
                 <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.98 }}>
-                  <Button size="lg" variant="outline" className="bg-white hover:bg-slate-50 border-2 border-slate-300 text-slate-700 px-8 py-6 rounded-xl font-semibold shadow-md min-w-[220px]">
+                  <Button size="lg" variant="outline" className="bg-white border-slate-300 text-slate-700 px-8 py-6 rounded-xl font-semibold shadow-md min-w-[220px]">
                     <Handshake className="w-5 h-5 mr-2" />
                     Be a Partner
                   </Button>
