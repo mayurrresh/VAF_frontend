@@ -1,0 +1,73 @@
+import eventReadingCircle from "@/assets/TSS/20250615182231_JF0A9560.jpg";
+import eventHandsBooks from "@/assets/TSS/JF0A2695.jpg";
+import eventStorytelling from "@/assets/TSS/20250615180334_JF0A9526.jpg";
+import eventBooksFlatlay from "@/assets/TSS/JF0A2682.jpg";
+import eventOutdoorMeetup from "@/assets/TSS/20250615175340_JF0A9517.jpg";
+import eventReadingMoment from "@/assets/TSS/JF0A4180.jpg";
+
+const galleryImages = [
+  { src: eventReadingCircle, alt: "Community members gathered in a reading circle discussion", caption: "Reading Circle" },
+  { src: eventHandsBooks, alt: "Hands holding open books during a shared reading session", caption: "Shared Reading" },
+  { src: eventStorytelling, alt: "Storytelling circle with attentive listeners", caption: "Storytelling Session" },
+  { src: eventBooksFlatlay, alt: "Curated books and tea arranged for a reading meetup", caption: "Curated Reads" },
+  { src: eventOutdoorMeetup, alt: "Outdoor garden meetup with string lights", caption: "Garden Gathering" },
+  { src: eventReadingMoment, alt: "Intimate moment of reading together", caption: "Quiet Moments" },
+];
+
+function EventGallery() {
+  return (
+    <section className="pt-7 pb-7 bg-[#F6E2CC]">
+      <div className="ss-container">
+
+        {/* Header */}
+        <div className="text-center mb-12 max-w-2xl mx-auto">
+          <span className="text-[11px] tracking-[0.35em] uppercase text-[#92400E] block mb-4">
+            Moments from the Shelf
+          </span>
+
+          <h2 className="text-3xl md:text-4xl font-display font-semibold text-[#0F172A] mb-4">
+            Where community happens
+          </h2>
+
+          <p className="text-base text-[#1F2937] leading-relaxed">
+            Real moments of connection, conversation, and shared discovery from our gatherings.
+          </p>
+        </div>
+
+        {/* Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          {galleryImages.map((image, index) => (
+            <div
+              key={index}
+              className="group relative overflow-hidden rounded-xl shadow-md"
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end">
+                <p className="text-white text-sm px-4 py-4 font-medium">
+                  {image.caption}
+                </p>
+              </div>
+            </div>
+          ))}
+
+        </div>
+
+      </div>
+
+      {/* Divider */}
+      <div className="mt-24 flex justify-center">
+        <div className="w-28 h-[2px] bg-[#C2410C]/70" />
+      </div>
+    </section>
+  );
+}
+
+export default EventGallery;
