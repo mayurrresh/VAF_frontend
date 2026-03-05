@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, Heart, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-
 
 import logo from "@/assets/Logo.png";
 
@@ -31,30 +30,58 @@ const initiatives = [
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 60);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white border-b border-gray-200 shadow-sm"
+          : "bg-transparent"
+      }`}
+    >
       <div className="container mx-auto flex items-center justify-between h-20 px-6">
-        
-        {/* Logo + Foundation Name */}
+
+        {/* Logo */}
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="Logo" className="h-20 w-auto" />
-          <span className="text-2xl text-black font-serif tracking-wide">
+          <img src={logo} alt="Logo" className="h-16 w-auto" />
+
+          <span
+            className={`text-2xl font-serif tracking-wide transition-colors duration-300 ${
+              scrolled ? "text-black" : "text-white"
+            }`}
+          >
             Vinit Abhedya Foundation
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-10 relative">
 
           {navLinks.map((link) => (
             <Link
               key={link.href}
               to={link.href}
-              className="text-sm font-medium text-black relative group transition-all duration-300"
+              className={`text-sm font-medium relative group transition-all duration-300 ${
+                scrolled ? "text-black" : "text-white"
+              }`}
             >
               {link.label}
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-black transition-all duration-300 group-hover:w-full"></span>
+
+              <span
+                className={`absolute left-0 -bottom-1 w-0 h-[2px] transition-all duration-300 group-hover:w-full ${
+                  scrolled ? "bg-black" : "bg-white"
+                }`}
+              ></span>
             </Link>
           ))}
 
@@ -64,10 +91,19 @@ const Navbar = () => {
             onMouseEnter={() => setDropdownOpen(true)}
             onMouseLeave={() => setDropdownOpen(false)}
           >
-            <button className="flex items-center gap-1 text-sm font-medium text-black relative group">
+            <button
+              className={`flex items-center gap-1 text-sm font-medium relative group ${
+                scrolled ? "text-black" : "text-white"
+              }`}
+            >
               Initiatives
               <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-black transition-all duration-300 group-hover:w-full"></span>
+
+              <span
+                className={`absolute left-0 -bottom-1 w-0 h-[2px] transition-all duration-300 group-hover:w-full ${
+                  scrolled ? "bg-black" : "bg-white"
+                }`}
+              ></span>
             </button>
 
             <AnimatePresence>
@@ -95,7 +131,7 @@ const Navbar = () => {
             </AnimatePresence>
           </div>
 
-          {/* Green Donate Button */}
+          {/* Donate */}
           <Link to="/donate">
             <Button className="bg-green-600 hover:bg-green-700 text-white gap-2 rounded-full px-7 py-2 transition-all duration-300 shadow-md hover:shadow-lg">
               <Heart className="w-4 h-4" /> Donate
@@ -105,7 +141,7 @@ const Navbar = () => {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-black"
+          className={`${scrolled ? "text-black" : "text-white"} md:hidden`}
           onClick={() => setOpen(!open)}
         >
           {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
