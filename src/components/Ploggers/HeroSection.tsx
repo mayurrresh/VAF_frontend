@@ -1,6 +1,6 @@
 import { Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/Ploggers/20230709090250_IMG_0191.jpg";
+import heroImage from "@/assets/Ploggers/20250112092520_JF0A2000.JPG";
 
 const HeroSection = () => {
   return (
@@ -11,7 +11,7 @@ const HeroSection = () => {
         <img
           src={heroImage}
           alt="Community members plogging together"
-          className="w-full h-full object-cover object-[center_5%] scale-100"
+          className="w-full h-full object-cover object-[center] scale-100"
         />
 
         {/* Stronger cinematic overlay */}

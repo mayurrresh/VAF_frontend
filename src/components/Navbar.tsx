@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, Heart, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
@@ -30,6 +30,16 @@ const initiatives = [
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 60);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -39,7 +49,13 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white border-b border-gray-200 shadow-sm"
+          : "bg-transparent"
+      }`}
+    >
       <div className="container mx-auto flex items-center justify-between h-20 px-6">
         
         {/* Logo + Foundation Name */}
@@ -54,7 +70,7 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-10 relative">
 
           {navLinks.map((link) => (
@@ -65,7 +81,12 @@ const Navbar = () => {
               className="text-sm font-medium text-black relative group transition-all duration-300"
             >
               {link.label}
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-black transition-all duration-300 group-hover:w-full"></span>
+
+              <span
+                className={`absolute left-0 -bottom-1 w-0 h-[2px] transition-all duration-300 group-hover:w-full ${
+                  scrolled ? "bg-black" : "bg-white"
+                }`}
+              ></span>
             </Link>
           ))}
 
@@ -75,10 +96,19 @@ const Navbar = () => {
             onMouseEnter={() => setDropdownOpen(true)}
             onMouseLeave={() => setDropdownOpen(false)}
           >
-            <button className="flex items-center gap-1 text-sm font-medium text-black relative group">
+            <button
+              className={`flex items-center gap-1 text-sm font-medium relative group ${
+                scrolled ? "text-black" : "text-white"
+              }`}
+            >
               Initiatives
               <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-black transition-all duration-300 group-hover:w-full"></span>
+
+              <span
+                className={`absolute left-0 -bottom-1 w-0 h-[2px] transition-all duration-300 group-hover:w-full ${
+                  scrolled ? "bg-black" : "bg-white"
+                }`}
+              ></span>
             </button>
 
             <AnimatePresence>
@@ -117,7 +147,7 @@ const Navbar = () => {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-black"
+          className={`${scrolled ? "text-black" : "text-white"} md:hidden`}
           onClick={() => setOpen(!open)}
         >
           {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
