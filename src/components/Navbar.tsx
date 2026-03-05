@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 
-
 import logo from "@/assets/Logo.png";
 
 const navLinks = [
@@ -32,12 +31,23 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
       <div className="container mx-auto flex items-center justify-between h-20 px-6">
         
         {/* Logo + Foundation Name */}
-        <Link to="/" className="flex items-center gap-3">
+        <Link
+          to="/"
+          onClick={scrollToTop}
+          className="flex items-center gap-3"
+        >
           <img src={logo} alt="Logo" className="h-20 w-auto" />
           <span className="text-2xl text-black font-serif tracking-wide">
             Vinit Abhedya Foundation
@@ -51,6 +61,7 @@ const Navbar = () => {
             <Link
               key={link.href}
               to={link.href}
+              onClick={scrollToTop}
               className="text-sm font-medium text-black relative group transition-all duration-300"
             >
               {link.label}
@@ -84,6 +95,7 @@ const Navbar = () => {
                       <Link
                         key={item.href}
                         to={item.href}
+                        onClick={scrollToTop}
                         className="block px-5 py-3 text-sm text-black hover:bg-gray-100 transition-colors duration-200"
                       >
                         {item.label}
@@ -95,8 +107,8 @@ const Navbar = () => {
             </AnimatePresence>
           </div>
 
-          {/* Green Donate Button */}
-          <Link to="/donate">
+          {/* Donate Button */}
+          <Link to="/donate" onClick={scrollToTop}>
             <Button className="bg-green-600 hover:bg-green-700 text-white gap-2 rounded-full px-7 py-2 transition-all duration-300 shadow-md hover:shadow-lg">
               <Heart className="w-4 h-4" /> Donate
             </Button>
@@ -128,7 +140,10 @@ const Navbar = () => {
                   key={link.href}
                   to={link.href}
                   className="text-base font-medium text-black py-2"
-                  onClick={() => setOpen(false)}
+                  onClick={() => {
+                    setOpen(false);
+                    scrollToTop();
+                  }}
                 >
                   {link.label}
                 </Link>
@@ -143,13 +158,22 @@ const Navbar = () => {
                   key={item.href}
                   to={item.href}
                   className="text-sm text-black py-2 pl-4"
-                  onClick={() => setOpen(false)}
+                  onClick={() => {
+                    setOpen(false);
+                    scrollToTop();
+                  }}
                 >
                   {item.label}
                 </Link>
               ))}
 
-              <Link to="/donate" onClick={() => setOpen(false)}>
+              <Link
+                to="/donate"
+                onClick={() => {
+                  setOpen(false);
+                  scrollToTop();
+                }}
+              >
                 <Button className="bg-green-600 hover:bg-green-700 text-white gap-2 rounded-full w-full mt-4">
                   <Heart className="w-4 h-4" /> Donate
                 </Button>
