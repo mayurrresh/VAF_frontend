@@ -1,8 +1,8 @@
-import img1 from "@/assets/TSS/JF0A2655.JPG";
-import img2 from "@/assets/TSS/JF0A2695.JPG";
-import img3 from "@/assets/TSS/20250615180334_JF0A9526.JPG";
-import img4 from "@/assets/TSS/JF0A4180.JPG";
-import img5 from "@/assets/TSS/20250615182231_JF0A9560.JPG";
+import img1 from "@/assets/TSS/JF0A2655.jpg";
+import img2 from "@/assets/TSS/JF0A2695.jpg";
+import img3 from "@/assets/TSS/20250615180334_JF0A9526.jpg";
+import img4 from "@/assets/TSS/JF0A4180.jpg";
+import img5 from "@/assets/TSS/20250615182231_JF0A9560.jpg";
 import img6 from "@/assets/TSS/JF0A2687.jpg";
 
 const galleryImages = [

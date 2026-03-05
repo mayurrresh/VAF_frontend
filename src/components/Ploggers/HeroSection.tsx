@@ -1,6 +1,6 @@
 import { Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/Ploggers/20250112092520_JF0A2000.JPG";
+import heroImage from "@/assets/Ploggers/20250112092520_JF0A2000.jpg";
 
 const HeroSection = () => {
   return (
