@@ -1,6 +1,6 @@
- import communityImage1 from "@/assets/Ploggers/20230709090250_IMG_0191.jpg";
- import communityImage2 from "@/assets/Ploggers/20250406083235_JF0A0410.jpg";
- import communityImage3 from "@/assets/Ploggers/20230709093122_IMG_0282.jpg";
+ import communityImage1 from "@/assets/Ploggers/20230709093122_IMG_0282.JPG";
+ import communityImage2 from "@/assets/Ploggers/20230430072624_IMG_7134.JPG";
+ import communityImage3 from "@/assets/Ploggers/20230430074828_IMG_7187.JPG";
  
  const CommunityGallery = () => {
    const images = [
