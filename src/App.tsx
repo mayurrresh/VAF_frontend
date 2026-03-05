@@ -10,6 +10,7 @@ import PloggersPage from "./pages/Ploggers";
 import SocialShelfPage from "./pages/SocialShelf";
 import LaalBindiPage from "./pages/LaalBindi";
 
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -18,6 +19,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
