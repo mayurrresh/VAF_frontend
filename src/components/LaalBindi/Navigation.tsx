@@ -1,6 +1,6 @@
 import { motion, useScroll } from "framer-motion";
 import { useState, useEffect } from "react";
-import logo from "../../assets/LaalBindiLogo.jpeg";
+import logo from "../../assets/LaalBindiLogo.png";
 
 export function Navigation() {
   const { scrollY } = useScroll();
