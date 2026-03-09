@@ -1,6 +1,10 @@
-import { Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+<<<<<<< HEAD
 import heroImage from "@/assets/Ploggers/20250112092520_JF0A2000.jpg";
+=======
+
+const heroImage = "/images/Ploggers/hero-bg.jpeg";
+>>>>>>> 4da8e2b (Improve folder structure and refine UI layout)
 
 const HeroSection = () => {
   return (
@@ -25,13 +29,10 @@ const HeroSection = () => {
       <div className="relative z-10 container-wide px-6 pt-40 pb-28 text-center">
         <div className="max-w-3xl mx-auto">
 
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-5 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full mb-8">
-            <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-white">
-              A Community Movement
-            </span>
-          </div>
+          {/* Eyebrow Text */}
+          <p className="text-xs tracking-[0.45em] uppercase text-white/70 mb-6 font-medium">
+            A Community Clean-Up Initiative
+          </p>
 
           {/* Heading */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
@@ -42,8 +43,7 @@ const HeroSection = () => {
           {/* Subtext */}
           <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed">
             Plogging combines jogging with picking up litter — a simple act of 
-            walking, cleaning, and caring for the places we call home. 
-            Small steps, done together, create real change.
+            walking, cleaning, and caring for the places we call home.
           </p>
 
           {/* CTAs */}
@@ -69,7 +69,6 @@ const HeroSection = () => {
               asChild
             >
               <a href="#join">
-                <Play className="w-4 h-4 mr-2" />
                 Join a Drive
               </a>
             </Button>

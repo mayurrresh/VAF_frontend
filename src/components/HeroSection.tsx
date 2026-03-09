@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroBg from "@/assets/20230423080147_IMG_6901-scaled.jpg";
-
 
 const HeroSection = () => {
   return (
@@ -13,7 +11,7 @@ const HeroSection = () => {
       {/* Background */}
       <div className="absolute inset-0">
         <img
-          src={heroBg}
+          src="/images/VinitAbhedya/hero-bg.jpg"
           alt="Volunteers planting trees"
           className="w-full h-full object-cover object-[center_5%] scale-105"
         />
@@ -24,7 +22,7 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 text-center">
+      <div className="relative z-10 container mx-auto px-6 text-center pt-20 md:pt-28">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}

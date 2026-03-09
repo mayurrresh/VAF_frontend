@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 
-import logo from "@/assets/Logo.png";
+const logo = "/images/VinitAbhedya/Logo.png";
 
 const navLinks = [
   { label: "Home", href: "/" },

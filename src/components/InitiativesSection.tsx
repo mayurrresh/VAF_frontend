@@ -8,19 +8,19 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-import ploggersImg from "@/assets/ploggers.jpeg";
-import socialShelfImg from "@/assets/social-shelf.jpeg";
-import bookImg from "@/assets/books.jpeg";
-import laalBindiImg from "@/assets/laal-bindi.jpeg";
-import laalBindi2Img from "@/assets/laal-bindi2.jpeg";
-
+const ploggersImg = "/images/VinitAbhedya/ploggers.jpeg";
+const ploggers2Img = "/images/VinitAbhedya/ploggers3.jpeg";
+const socialShelfImg = "/images/VinitAbhedya/social-shelf.jpeg";
+const bookImg = "/images/VinitAbhedya/books.jpeg";
+const laalBindiImg = "/images/VinitAbhedya/laal-bindi.jpeg";
+const laalBindi2Img = "/images/VinitAbhedya/laal-bindi4.jpg";
 
 const initiatives = [
   {
     title: "Sambhajinagar Ploggers",
     description:
       "Combining fitness with environmental cleanup, Sambhajinagan Ploggers brings together citizens who jog through city streets while collecting waste.",
-    images: [ploggersImg, ploggersImg],
+    images: [ploggersImg, ploggers2Img],
     tag: "Environment",
     badge: "bg-emerald-600",
     accentColor: "#059669",
@@ -30,7 +30,7 @@ const initiatives = [
     title: "Social Shelf",
     description:
       "A community-driven book-sharing initiative creating open access to knowledge across neighborhoods.",
-    images: [socialShelfImg, bookImg],
+    images: [ bookImg,socialShelfImg],
     tag: "Education",
     badge: "bg-[#E8A857]",
     accentColor: "#E8A857",

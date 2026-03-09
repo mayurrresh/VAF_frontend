@@ -13,7 +13,7 @@ import { Footer } from '../components/LaalBindi/Footer';
 export default function App() {
   return (
     <div className="overflow-x-hidden">
-      <Navigation />``
+      <Navigation />
       <Hero />
       <About />
       <WhyItMatters />

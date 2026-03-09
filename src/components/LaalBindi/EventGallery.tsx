@@ -1,27 +1,26 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ImageWithFallback } from "../image/ImageWithFallback";
-
-import img1 from "../../components/image/IMG_7397.jpg.jpeg";
-import img2 from "../../components/image/IMG_7419.jpg.jpeg";
-import img3 from "../../components/image/laal-bindi2.jpeg";
-import img4 from "../../components/image/IMG_7442.jpg.jpeg";
-import img5 from "../../components/image/IMG_7428.jpg.jpeg";
-import img6 from "../../components/image/IMG_7426.jpg.jpeg";
+import { ImageWithFallback } from "./ImageWithFallback";
+const img1 = "/images/Laalbindi/event5.jpeg";
+const img2 = "/images/Laalbindi/event3.jpeg";
+const img3 = "/images/Laalbindi/event2.jpeg";
+const img4 = "/images/Laalbindi/event1.jpeg";
+const img5 = "/images/Laalbindi/event6.jpeg";
+const img6 = "/images/Laalbindi/event4.jpeg";
 
 export function EventGallery() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-
-  const eventPhotos = [
-    { src: img1, caption: "Women Leading the Change" },
-    { src: img2, caption: "Breaking Silence Through Education" },
-    { src: img3, caption: "Conversations That Spark Courage" },
-    { src: img4, caption: "Empowering Young Voices" },
-    { src: img5, caption: "Reaching Communities with Dignity" },
-    { src: img6, caption: "Building Confidence, One Session at a Time" }
-  ];
+  
+const eventPhotos = [
+  { src: img1, caption: "Partner School Where Awareness Sessions Are Conducted" },
+  { src: img2, caption: "Menstrual Health Awareness Session in Classroom" },
+  { src: img3, caption: "Interactive Learning and Open Conversations" },
+  { src: img4, caption: "Team and Students Celebrating the Awareness Drive" },
+  { src: img5, caption: "Students Engaging and Participating During the Session" },
+  { src: img6, caption: "Laal Bindi Team at the School Campus" }
+];
 
   return (
     <>
