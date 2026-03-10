@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-import img1 from "@/assets/TSS/JF0A2655.jpg";
-import img2 from "@/assets/TSS/JF0A2695.jpg";
-import img3 from "@/assets/TSS/20250615180334_JF0A9526.jpg";
-import img4 from "@/assets/TSS/JF0A4180.jpg";
-import img5 from "@/assets/TSS/20250615182231_JF0A9560.jpg";
-import img6 from "@/assets/TSS/JF0A2687.jpg";
-
-const galleryImages = [
-  { src: img1, alt: "Community members gathered in a reading circle discussion", caption: "Reading Circle" },
-  { src: img2, alt: "Hands holding open books during a shared reading session", caption: "Shared Reading" },
-  { src: img3, alt: "Storytelling circle with attentive listeners", caption: "Storytelling Session" },
-  { src: img4, alt: "Curated books and tea arranged for a reading meetup", caption: "Curated Reads" },
-  { src: img5, alt: "Outdoor garden meetup with string lights", caption: "Garden Gathering" },
-  { src: img6, alt: "Intimate moment of reading together", caption: "Quiet Moments" },
-=======
 const events = [
   "/images/TSS/event6.jpeg",
   "/images/TSS/event1.jpeg",
@@ -30,7 +14,6 @@ const captions = [
   "Community Conversation",
   "Curated Book Display",
   "Shared Reading",
->>>>>>> 4da8e2b (Improve folder structure and refine UI layout)
 ];
 
 function EventGallery() {
@@ -53,17 +36,12 @@ function EventGallery() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-<<<<<<< HEAD
-          {galleryImages.map((image, index) => (
-            <div key={index} className="group relative overflow-hidden rounded-xl shadow-md">
-=======
 
           {events.map((img, index) => (
             <div
               key={index}
               className="group relative overflow-hidden rounded-xl shadow-md"
             >
->>>>>>> 4da8e2b (Improve folder structure and refine UI layout)
               <img
                 src={img}
                 alt={`Event ${index + 1}`}

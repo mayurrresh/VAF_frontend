@@ -1,12 +1,6 @@
-<<<<<<< HEAD
- import communityImage1 from "@/assets/Ploggers/20230709093122_IMG_0282.jpg";
- import communityImage2 from "@/assets/Ploggers/20230430072624_IMG_7134.jpg";
- import communityImage3 from "@/assets/Ploggers/20230430074828_IMG_7187.jpg";
-=======
  const communityImage1 ="/images/Ploggers/community1.jpeg";
  const communityImage2 ="/images/Ploggers/community2.jpeg";
  const communityImage3 ="/images/Ploggers/community3.jpeg";
->>>>>>> 4da8e2b (Improve folder structure and refine UI layout)
  
  const CommunityGallery = () => {
    const images = [

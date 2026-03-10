@@ -1,10 +1,6 @@
 import { Button } from "@/components/ui/button";
-<<<<<<< HEAD
-import heroImage from "@/assets/Ploggers/20250112092520_JF0A2000.jpg";
-=======
 
 const heroImage = "/images/Ploggers/hero-bg.jpeg";
->>>>>>> 4da8e2b (Improve folder structure and refine UI layout)
 
 const HeroSection = () => {
   return (

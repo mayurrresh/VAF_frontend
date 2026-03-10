@@ -55,7 +55,7 @@ const AboutSection = () => {
             className="rounded-2xl overflow-hidden shadow-elevated"
           >
             <img
-              src="/images/VinitAbhedya/about-us.jpg"
+              src="/images/VinitAbhedya/about-us.jpeg"
               alt="Community initiatives by Vinit Abhedya Foundation"
               className="w-full h-full object-cover"
             />

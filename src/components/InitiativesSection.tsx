@@ -13,7 +13,7 @@ const ploggers2Img = "/images/VinitAbhedya/ploggers3.jpeg";
 const socialShelfImg = "/images/VinitAbhedya/social-shelf.jpeg";
 const bookImg = "/images/VinitAbhedya/books.jpeg";
 const laalBindiImg = "/images/VinitAbhedya/laal-bindi.jpeg";
-const laalBindi2Img = "/images/VinitAbhedya/laal-bindi4.jpg";
+const laalBindi2Img = "/images/VinitAbhedya/laal-bindi2.jpeg";
 
 const initiatives = [
   {
