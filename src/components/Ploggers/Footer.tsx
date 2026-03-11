@@ -1,5 +1,5 @@
 import { Mail, MapPin } from "lucide-react";
-import footerLogo from "@/assets/Ploggers/sambhajinagar-logo-for-Website.png";
+const footerLogo = "/images/Ploggers/sambhajinagar-logo-for-Website.png";
 
 const Footer = () => {
   const quickLinks = [

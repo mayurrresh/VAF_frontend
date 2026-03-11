@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import aboutImg from "@/assets/20210905100549_IMG_5103-1-1-scaled.jpg";
 
 const AboutSection = () => {
   return (
@@ -56,7 +55,7 @@ const AboutSection = () => {
             className="rounded-2xl overflow-hidden shadow-elevated"
           >
             <img
-              src={aboutImg}
+              src="/images/VinitAbhedya/about-us.jpeg"
               alt="Community initiatives by Vinit Abhedya Foundation"
               className="w-full h-full object-cover"
             />

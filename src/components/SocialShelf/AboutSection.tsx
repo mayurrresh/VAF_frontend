@@ -1,4 +1,4 @@
-import eventReadingCircle from "@/assets/books.jpeg";
+const eventReadingCircle = "/images/VinitAbhedya/books.jpeg";
 
 const AboutSection = () => {
   return (

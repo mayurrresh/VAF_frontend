@@ -1,17 +1,19 @@
-import img1 from "@/assets/TSS/JF0A2655.jpg";
-import img2 from "@/assets/TSS/JF0A2695.jpg";
-import img3 from "@/assets/TSS/20250615180334_JF0A9526.jpg";
-import img4 from "@/assets/TSS/JF0A4180.jpg";
-import img5 from "@/assets/TSS/20250615182231_JF0A9560.jpg";
-import img6 from "@/assets/TSS/JF0A2687.jpg";
+const events = [
+  "/images/TSS/event6.jpeg",
+  "/images/TSS/event1.jpeg",
+  "/images/TSS/event10.jpeg",
+  "/images/TSS/event8.jpeg",
+  "/images/TSS/event4.jpeg",
+  "/images/TSS/event2.jpeg",
+];
 
-const galleryImages = [
-  { src: img1, alt: "Community members gathered in a reading circle discussion", caption: "Reading Circle" },
-  { src: img2, alt: "Hands holding open books during a shared reading session", caption: "Shared Reading" },
-  { src: img3, alt: "Storytelling circle with attentive listeners", caption: "Storytelling Session" },
-  { src: img4, alt: "Curated books and tea arranged for a reading meetup", caption: "Curated Reads" },
-  { src: img5, alt: "Outdoor garden meetup with string lights", caption: "Garden Gathering" },
-  { src: img6, alt: "Intimate moment of reading together", caption: "Quiet Moments" },
+const captions = [
+  "Circle Discussion",
+  "Solo Reading Moment",
+  "Facilitated Dialogue",
+  "Community Conversation",
+  "Curated Book Display",
+  "Shared Reading",
 ];
 
 function EventGallery() {
@@ -34,18 +36,22 @@ function EventGallery() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {galleryImages.map((image, index) => (
-            <div key={index} className="group relative overflow-hidden rounded-xl shadow-md">
+
+          {events.map((img, index) => (
+            <div
+              key={index}
+              className="group relative overflow-hidden rounded-xl shadow-md"
+            >
               <img
-                src={image.src}
-                alt={image.alt}
+                src={img}
+                alt={`Event ${index + 1}`}
                 className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
               />
 
               <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end">
                 <p className="text-white text-sm px-4 py-4 font-medium">
-                  {image.caption}
+                  {captions[index]}
                 </p>
               </div>
             </div>

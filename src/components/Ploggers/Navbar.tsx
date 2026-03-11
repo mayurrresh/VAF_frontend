@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/Ploggers/sambhajinagar-logo-for-Website.png";
+const logo = "/images/Ploggers/sambhajinagar-logo-for-Website.png";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
