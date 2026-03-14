@@ -7,23 +7,23 @@ import { Link } from "react-router-dom";
 const logo = "/images/VinitAbhedya/Logo.png";
 
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const initiatives = [
   {
     label: "Sambhajinagar Ploggers",
-    href: "/Ploggers",
-  },
-  {
-    label: "Laal Bindi",
-    href: "/laal-bindi",
+    href: "/ploggers",
   },
   {
     label: "Social Shelf",
     href: "/social-shelf",
+  },
+  {
+    label: "Laal Bindi",
+    href: "/laal-bindi",
   },
 ];
 
@@ -48,6 +48,16 @@ const Navbar = () => {
     });
   };
 
+  const handleNavClick = (href: string) => {
+    if (href.startsWith("#")) {
+      const id = href.slice(1);
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -58,9 +68,13 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between h-20 px-6">
         
-        {/* Logo */}
-        <Link to="/" onClick={scrollToTop} className="flex items-center gap-3">
-          <img src={logo} alt="Logo" className="h-16 w-auto" />
+        {/* Logo + Foundation Name */}
+        <Link
+          to="/"
+          onClick={scrollToTop}
+          className="flex items-center gap-3"
+        >
+          <img src={logo} alt="Logo" className="h-20 w-auto" />
           <span
             className={`text-2xl font-serif tracking-wide ${
               scrolled ? "text-black" : "text-white"
@@ -74,10 +88,13 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-10 relative">
 
           {navLinks.map((link) => (
-            <Link
+            <a
               key={link.href}
-              to={link.href}
-              onClick={scrollToTop}
+              href={link.href}
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick(link.href);
+              }}
               className={`text-sm font-medium relative group transition-all duration-300 ${
                 scrolled ? "text-black" : "text-white"
               }`}
@@ -89,7 +106,7 @@ const Navbar = () => {
                   scrolled ? "bg-black" : "bg-white"
                 }`}
               ></span>
-            </Link>
+            </a>
           ))}
 
           {/* Initiatives Dropdown */}
@@ -140,16 +157,16 @@ const Navbar = () => {
           </div>
 
           {/* Donate Button */}
-          <Link to="/donate" onClick={scrollToTop}>
+          <a href="#donate" onClick={(e) => { e.preventDefault(); handleNavClick("#donate"); }}>
             <Button className="bg-green-600 hover:bg-green-700 text-white gap-2 rounded-full px-7 py-2 transition-all duration-300 shadow-md hover:shadow-lg">
               <Heart className="w-4 h-4" /> Donate
             </Button>
-          </Link>
+          </a>
         </div>
 
         {/* Mobile Toggle */}
         <button
-          className={`md:hidden ${scrolled ? "text-black" : "text-white"}`}
+          className={`${scrolled ? "text-black" : "text-white"} md:hidden`}
           onClick={() => setOpen(!open)}
         >
           {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -168,17 +185,18 @@ const Navbar = () => {
             <div className="flex flex-col p-6 gap-4">
 
               {navLinks.map((link) => (
-                <Link
+                <a
                   key={link.href}
-                  to={link.href}
+                  href={link.href}
                   className="text-base font-medium text-black py-2"
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
                     setOpen(false);
-                    scrollToTop();
+                    handleNavClick(link.href);
                   }}
                 >
                   {link.label}
-                </Link>
+                </a>
               ))}
 
               <div className="mt-4 font-semibold text-black">
@@ -199,17 +217,18 @@ const Navbar = () => {
                 </Link>
               ))}
 
-              <Link
-                to="/donate"
-                onClick={() => {
+              <a
+                href="#donate"
+                onClick={(e) => {
+                  e.preventDefault();
                   setOpen(false);
-                  scrollToTop();
+                  handleNavClick("#donate");
                 }}
               >
                 <Button className="bg-green-600 hover:bg-green-700 text-white gap-2 rounded-full w-full mt-4">
                   <Heart className="w-4 h-4" /> Donate
                 </Button>
-              </Link>
+              </a>
 
             </div>
           </motion.div>

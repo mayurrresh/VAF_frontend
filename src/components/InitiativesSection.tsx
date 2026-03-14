@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
   ExternalLink,
   Sparkles,
@@ -15,6 +16,9 @@ const bookImg = "/images/VinitAbhedya/books.jpeg";
 const laalBindiImg = "/images/VinitAbhedya/laal-bindi.jpeg";
 const laalBindi2Img = "/images/VinitAbhedya/laal-bindi2.jpeg";
 
+const VOLUNTEER_FORM = "https://docs.google.com/forms/d/e/1FAIpQLScrmxN2cjHbjJs8vBSqrRIyhlioUrAsiq8ufqvg7B_3G3efUg/viewform?usp=publish-editor";
+const PARTNERSHIP_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSe4Ulcsu93URYoHu3YAwpUotzrRQMeviDdOwWWUTHc40HdgDw/viewform?usp=dialog";
+
 const initiatives = [
   {
     title: "Sambhajinagar Ploggers",
@@ -24,17 +28,17 @@ const initiatives = [
     tag: "Environment",
     badge: "bg-emerald-600",
     accentColor: "#059669",
-    link: "#",
+    link: "/ploggers",
   },
   {
     title: "Social Shelf",
     description:
       "A community-driven book-sharing initiative creating open access to knowledge across neighborhoods.",
-    images: [ bookImg,socialShelfImg],
+    images: [bookImg, socialShelfImg],
     tag: "Education",
     badge: "bg-[#E8A857]",
     accentColor: "#E8A857",
-    link: "#",
+    link: "/social-shelf",
   },
   {
     title: "Laal Bindi",
@@ -44,7 +48,7 @@ const initiatives = [
     tag: "Women Empowerment",
     badge: "bg-rose-600",
     accentColor: "#e11d48",
-    link: "#",
+    link: "/laal-bindi",
   },
 ];
 
@@ -75,7 +79,7 @@ const InitiativesSection = () => {
 
   // Initiative auto-rotation (every 5 seconds)
   useEffect(() => {
-    autoplayRef.current = setInterval(() => paginate(1), 5000);
+    autoplayRef.current = setInterval(() => paginate(1), 8000);
 
     return () => {
       if (autoplayRef.current) {
@@ -127,7 +131,7 @@ const InitiativesSection = () => {
   const PhotoFrame = ({ delay, rotate, position, size, zIndex, imageIndexOffset = 0 }) => {
     // Show static image based on offset
     const displayImageIndex = imageIndexOffset % currentInitiative.images.length;
-    
+
     return (
       <motion.div
         initial={{ opacity: 0, rotate: rotate * 2, y: 30 }}
@@ -201,6 +205,22 @@ const InitiativesSection = () => {
 
           {/* Carousel Container */}
           <div className="relative">
+            {/* Left Button */}
+            <button
+              onClick={() => paginate(-1)}
+              className="absolute -left-6 top-1/2 -translate-y-1/2 z-40 bg-white shadow-lg p-3 rounded-full"
+            >
+              <ChevronLeft className="w-5 h-5 text-slate-800" />
+            </button>
+
+            {/* Right Button */}
+            <button
+              onClick={() => paginate(1)}
+              className="absolute -right-6 top-1/2 -translate-y-1/2 z-40 bg-white shadow-lg p-3 rounded-full"
+            >
+              <ChevronRight className="w-5 h-5 text-slate-800" />
+            </button>
+
             <div
               className="relative overflow-hidden rounded-3xl"
               role="region"
@@ -363,11 +383,11 @@ const InitiativesSection = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-100/60 via-teal-50/40 to-green-100/50" />
         <div className="absolute inset-0 bg-gradient-to-tr from-emerald-50/30 via-transparent to-teal-100/40" />
         <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-green-50/20 to-emerald-100/30" />
-        
+
         {/* Subtle radial glow effects */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-200/20 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-200/20 rounded-full blur-3xl" />
-        
+
         <div className="relative container mx-auto px-4 max-w-5xl">
           {/* Clean white box with subtle elevation */}
           <div className="bg-white/90 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-lg border border-emerald-100/50">
@@ -378,7 +398,7 @@ const InitiativesSection = () => {
               transition={{ duration: 0.8 }}
               className="text-center space-y-12"
             >
-              <motion.h2 
+              <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -407,16 +427,29 @@ const InitiativesSection = () => {
                 className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4"
               >
                 <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.98 }}>
-                  <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 rounded-xl font-semibold shadow-lg min-w-[220px]">
-                    <HandHeart className="w-5 h-5 mr-2" />
-                    Join as Volunteer
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 rounded-xl font-semibold shadow-lg min-w-[220px]"
+                  >
+                    <a href={VOLUNTEER_FORM} target="_blank" rel="noopener noreferrer">
+                      <HandHeart className="w-5 h-5 mr-2" />
+                      Join as Volunteer
+                    </a>
                   </Button>
                 </motion.div>
 
                 <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.98 }}>
-                  <Button size="lg" variant="outline" className="bg-white border-slate-300 text-slate-700 px-8 py-6 rounded-xl font-semibold shadow-md min-w-[220px]">
-                    <Handshake className="w-5 h-5 mr-2" />
-                    Be a Partner
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="bg-white border-slate-300 text-slate-700 px-8 py-6 rounded-xl font-semibold shadow-md min-w-[220px]"
+                  >
+                    <a href={PARTNERSHIP_FORM} target="_blank" rel="noopener noreferrer">
+                      <Handshake className="w-5 h-5 mr-2" />
+                      Be a Partner
+                    </a>
                   </Button>
                 </motion.div>
               </motion.div>

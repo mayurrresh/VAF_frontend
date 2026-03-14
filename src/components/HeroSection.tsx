@@ -17,8 +17,8 @@ const HeroSection = () => {
         />
 
         {/* Clean SaaS-style overlay */}
-        <div className="absolute inset-0 bg-black/55" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/40 to-black/70" />
+        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70" />
       </div>
 
       {/* Content */}
@@ -29,6 +29,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-4xl mx-auto"
         >
+        
           {/* Heading */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 tracking-tight">
             Vinit Abhedya
